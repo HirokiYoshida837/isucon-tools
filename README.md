@@ -1,18 +1,14 @@
-# isucon-ansible-playbook
+# isucon-tools
 
-## 使い方
-
-ansible.cfgファイルをよしなに設定してあげてください
+ISUCON用のツール類まとめ
 
 
-## 実行
+## isucon-playbook
 
-<!-- ```sh
-# install dependency ansible-galaxy collection and roles.
-make install
-``` -->
+isucon競技時の初期設定用のAnsible Playbookです。
 
-```sh
-# execute ansible-playbook
-make run
-```
+## isucon-makefiles
+
+isucon競技時につかうスクリプトを整理するためのMakefileです。
+
+
