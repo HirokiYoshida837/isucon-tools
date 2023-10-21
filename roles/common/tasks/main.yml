@@ -49,3 +49,9 @@
     src: isugit2023
     dest: /home/isucon/.ssh/isugit2023
     mode: 0400
+
+- name: "checking ssh connection to github"
+  become_user: isucon
+  shell:
+    cmd: ssh github.com -T
+  ignore_errors: true
