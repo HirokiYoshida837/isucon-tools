@@ -1,0 +1,16 @@
+---
+- name: Ping Connection
+  ansible.builtin.ping:
+
+- name: "setting git config"
+  become: true
+  become_user: isucon
+  git_config:
+    scope: global
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+  loop:
+    - name: user.name
+      value: isucon
+    - name: user.email
+      value: isucon@isucon

@@ -1,0 +1,5 @@
+---
+- name: "isucon-server-initialize"
+  hosts: [isucon_app]
+  roles:
+    - common
