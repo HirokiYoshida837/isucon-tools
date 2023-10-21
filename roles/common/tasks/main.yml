@@ -15,12 +15,30 @@
     - name: user.email
       value: isucon@isucon
 
+# paramikoが必要でinstallが手間なので使わない
+# - name: "setting ssh config"
+#   become: true
+#   become_user: isucon
+#   vars:
+#     ansible_python_interpreter: /usr/bin/python3
+#   community.general.ssh_config:
+#     host: "github.com"
+#     identity_file: "~/.ssh/isugit2023"
+#     hostname: "github.com"
+#     user: isucon
+#     strict_host_key_checking: false
+
 - name: "setting ssh config"
   become: true
   become_user: isucon
-  community.general.ssh_config:
-    host: "github.com"
-    identity_file: "~/.ssh/isugit2023"
-    hostname: "github.com"
-    user: isucon
-    strict_host_key_checking: false
+  blockinfile:
+    path: /home/isucon/.ssh/config
+    create: true
+    block: |
+      Host github.com
+        IdentityFile ~/.ssh/isugit2023
+        User git
+        HostName github.com
+        StrictHostKeyChecking no
+
+
