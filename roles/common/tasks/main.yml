@@ -42,3 +42,10 @@
         StrictHostKeyChecking no
 
 
+- name: "copy ssh private key for github deploy"
+  become: true
+  become_user: isucon
+  copy:
+    src: isugit2023
+    dest: /home/isucon/.ssh/isugit2023
+    mode: 0400
