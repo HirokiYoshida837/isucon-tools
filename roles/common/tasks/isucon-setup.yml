@@ -1,0 +1,41 @@
+---
+- name: "roles/common/tasks/isucon-setup: Setting git config"
+  become: true
+  become_user: isucon
+  git_config:
+    scope: global
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+  loop:
+    - name: user.name
+      value: isucon
+    - name: user.email
+      value: isucon@isucon
+
+# paramikoが必要になるので `community.general.ssh_config` は利用しない。
+- name: "roles/common/tasks/isucon-setup: Setting ssh config"
+  become: true
+  become_user: isucon
+  blockinfile:
+    path: /home/isucon/.ssh/config
+    create: true
+    block: |
+      Host github.com
+        IdentityFile ~/.ssh/isugit2023
+        User git
+        HostName github.com
+        StrictHostKeyChecking no
+
+- name: "roles/common/tasks/isucon-setup: Copy ssh private key for github deploy"
+  become: true
+  become_user: isucon
+  copy:
+    src: isugit2023
+    dest: /home/isucon/.ssh/isugit2023
+    mode: 0400
+
+- name: "roles/common/tasks/isucon-setup: Checking ssh connection to github"
+  become_user: isucon
+  shell:
+    cmd: ssh github.com -T
+  ignore_errors: true

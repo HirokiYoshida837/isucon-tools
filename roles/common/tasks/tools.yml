@@ -1,0 +1,31 @@
+---
+- name: "roles/common/tasks/tools: Install dstat"
+  become_user: isucon
+  apt:
+    name: dstat
+
+# # refs from : [community/configuration-management/ansible-quickstart/tasks/install.yml at 4e097bf0ca7dba96142c974c92ccc4ad6001471c · netdata/community](https://github.com/netdata/community/blob/4e097bf0ca7dba96142c974c92ccc4ad6001471c/configuration-management/ansible-quickstart/tasks/install.yml)
+# - name: "roles/common/tasks/tools: download netdata install script"
+#   become_user: isucon
+#   get_url:
+#     url: https://my-netdata.io/kickstart.sh
+#     dest: ~/kickstart.sh
+#     mode: +x
+
+# - name: "roles/common/tasks/tools: Install Netdata"
+#   become_user: isucon
+#   command: ~/kickstart.sh --dont-wait
+
+# - name: "roles/common/tasks/tools: Cleanup installation script"
+#   become_user: isucon
+#   file:
+#     path: ~/kickstart.sh
+#     state: absent
+
+# # 間違って再起動時に立ち上がってほしくないので、起動はするがdisableにしておく
+# - name: "roles/common/tasks/tools: Disable Netdata service"
+#   systemd:
+#     name: netdata.service
+#     enabled: false
+#     state: restarted
+

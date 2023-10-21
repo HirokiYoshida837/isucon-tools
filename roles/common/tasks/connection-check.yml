@@ -1,0 +1,3 @@
+---
+- name: "roles/common/tasks/connection-check: Ping Connection Check"
+  ansible.builtin.ping:

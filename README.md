@@ -1,11 +1,16 @@
 # isucon-ansible-playbook
 
-## gettins start
+## 使い方
 
-```sh
+ansible.cfgファイルをよしなに設定してあげてください
+
+
+## 実行
+
+<!-- ```sh
 # install dependency ansible-galaxy collection and roles.
 make install
-```
+``` -->
 
 ```sh
 # execute ansible-playbook
